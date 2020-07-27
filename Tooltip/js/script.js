@@ -5,11 +5,11 @@ class Tooltip extends React.Component {
         this.toggle = this.toggle.bind(this);
     }
     toggle() {
-        const tooltipNode = ReactDOM.findDOMNode(this);
+        const { offsetTop: top, offsetLeft: left } = ReactDOM.findDOMNode(this);
         this.setState({
             opacity: !this.state.opacity,
-            top: tooltipNode.offsetTop,
-            left: tooltipNode.offsetLeft
+            top,
+            left
         });
     }
     render() {
@@ -54,5 +54,5 @@ ReactDOM.render(React.createElement(
         { text: 'This is the Tooltip' },
         'point at me'
     ),
-    ' the tooltip is inserted. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, reiciendis.'
+    ' the tooltip is inserted.'
 ), document.getElementById('tooltip'));

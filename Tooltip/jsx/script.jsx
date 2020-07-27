@@ -4,12 +4,12 @@ class Tooltip extends React.Component {
         this.state = { opacity: false }
         this.toggle = this.toggle.bind(this)
     }
-    toggle() {
-        const tooltipNode = ReactDOM.findDOMNode(this)
+    toggle () {
+        const { offsetTop: top, offsetLeft: left } = ReactDOM.findDOMNode(this)
         this.setState({
             opacity: !this.state.opacity,
-            top: tooltipNode.offsetTop,
-            left: tooltipNode.offsetLeft
+            top,
+            left
         })
     }
     render() {
@@ -41,8 +41,7 @@ class Tooltip extends React.Component {
 
 ReactDOM.render(
     <div>
-        Some text into which  <Tooltip text="This is the Tooltip">point at me</Tooltip> the tooltip is inserted. 
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, reiciendis.
+        Some text into which  <Tooltip text="This is the Tooltip">point at me</Tooltip> the tooltip is inserted.     
     </div>,
     document.getElementById('tooltip')
 )
